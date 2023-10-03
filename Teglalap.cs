@@ -10,14 +10,15 @@ namespace Osztalyok_gyakorlas
 	{
 		private double b;
 		private static Random rnd = new Random();
+
 		public Teglalap(double a, double b) : base(a)
 		{
 			this.b = b;
 		}
 
-		public Teglalap() : base(rnd.Next(10, 200))
+		public Teglalap() : base(VeletlenOldal())
 		{
-			this.b = rnd.Next(10, 200);
+			this.b = VeletlenOldal();
 		}
 
 		public double B { get => b; set => b = value; }

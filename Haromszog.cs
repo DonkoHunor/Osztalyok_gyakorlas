@@ -10,7 +10,6 @@ namespace Osztalyok_gyakorlas
 	{
 		private double b;
 		private double c;
-		private static Random rnd = new Random();
 
 		public Haromszog(double a, double b, double c) : base(a)
 		{
@@ -77,11 +76,6 @@ namespace Osztalyok_gyakorlas
 			return this.A + this.b > this.c 
 				&& this.A + this.c > this.b 
 				&& this.b + this.c > this.A;
-		}
-
-		private static int VeletlenOldal()
-		{
-			return rnd.Next(5, 15);
 		}
 
 		public override double GetKerulet()

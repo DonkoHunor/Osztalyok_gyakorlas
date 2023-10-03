@@ -8,44 +8,40 @@ namespace Osztalyok_gyakorlas
 {
 	internal class Paralelogramma : Teglalap
 	{
-		private double alfa;
-		private static Random rnd = new Random();
-
-		
+		private double alfa;	
 
 		public Paralelogramma(double a, double b, double alfa) : base(a, b)
-		{
-			this.alfa = alfa;
-			if (alfa < 0 || alfa > 180)
+		{			
+			if (alfa < 0 || alfa >= 180)
 			{
-				throw new ArgumentException("Rossz szög!");
+				throw new ArgumentException("Rossz szög!", nameof(alfa));
 			}
+			this.alfa = alfa;
 		}
 
 		public Paralelogramma() : base(VeletlenOldal(), VeletlenOldal())
 		{
-			this.alfa = VeletlenOldal();
-			if (alfa < 0 || alfa > 180)
+			this.alfa = VeletlenSzog();
+		}
+
+		public double Alfa { get => alfa;
+			set
 			{
-				throw new ArgumentException("Rossz szög!");
-			}
-		}
-
-		public double Alfa { get => alfa; set => alfa = value; }
-
-		private static int VeletlenOldal()
-		{
-			return rnd.Next(10, 200);
-		}
+				if (value < 0 || value >= 180)
+				{
+					throw new ArgumentException("Rossz szög!", nameof(value));
+				}
+				this.alfa = value;
+			} }
 
 		public override double GetTerulet()
 		{
-			return Math.Round(this.A * this.B * Math.Sin(alfa/180*Math.PI),4);
+			return Math.Round(this.A * this.B * Math.Sin(alfa / 180 * Math.PI));
 		}
 
 		public override string ToString()
 		{
-			return $"alfa szög: {this.alfa}" + $"{base.ToString()}\n";
+			return $"alfa szög: {this.alfa}°\n" + $"{base.ToString()}";
 		}
 	}
 }

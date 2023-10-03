@@ -8,15 +8,26 @@ namespace Osztalyok_gyakorlas
 {
 	internal class Sokszogek
 	{
-		private List<Sokszog> list = new List<Sokszog> ();
+		private List<Sokszog> list = new List<Sokszog>();
+		private static Random rnd = new Random();
 
 		public Sokszogek()
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				list.Add(new Haromszog());
-				list.Add(new Teglalap());
-				list.Add(new Paralelogramma());
+				int sokszog = rnd.Next(3);
+				switch (sokszog)
+				{
+					case 0:
+						list.Add(new Teglalap());
+						break;
+					case 1:
+						list.Add(new Haromszog());
+						break;
+					case 2:
+						list.Add(new Paralelogramma());
+						break;
+				}				
 			}
 		}
 
@@ -52,17 +63,17 @@ namespace Osztalyok_gyakorlas
 					index = i;
 				}
 			}
-			return index;
+			return index + 1;
 		}
 
 		public override string ToString()
 		{
-			string eredmeny="";
+			var sb = new StringBuilder("Sokszögek:");
 			foreach (Sokszog s in list)
 			{
-				eredmeny += s.ToString();
+				sb.AppendLine(s.ToString());
 			}
-			return eredmeny;
+			return sb.ToString();
 		}
 	}
 }
