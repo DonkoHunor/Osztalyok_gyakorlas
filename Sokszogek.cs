@@ -20,7 +20,7 @@ namespace Osztalyok_gyakorlas
 			}
 		}
 
-		public double osszKerulet()
+		public double OsszKerulet()
 		{
 			double ossz = 0;
 			foreach (Sokszog s in list)
@@ -28,6 +28,31 @@ namespace Osztalyok_gyakorlas
 				ossz += s.GetKerulet();
 			}
 			return ossz;
+		}
+
+		public double OsszTerulet()
+		{
+			double ossz = 0;
+			foreach (Sokszog s in list)
+			{
+				ossz += s.GetTerulet();
+			}
+			return ossz;
+		}
+
+		public int MaxTerulet()
+		{
+			int index = -1;
+			double max = int.MinValue;
+			for (int i = 0; i < list.Count(); i++)
+			{
+				if (list[i].GetTerulet() > max)
+				{
+					max = list[i].GetTerulet();
+					index = i;
+				}
+			}
+			return index;
 		}
 
 		public override string ToString()
